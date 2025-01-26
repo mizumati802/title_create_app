@@ -5,204 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>タイトル生成ツール</title>
-  <style>
-    /* 基本スタイル */
-    .app {
-      margin-top: 360px;
-    }
-
-    select {
-      font-size: 20pt;
-    }
-
-    #output {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
-      width: 100%;
-      height: 100px;
-      padding: 10px;
-    }
-
-    .red-text {
-      color: red;
-    }
-
-    /* グリッドレイアウト */
-    .item_category_section,
-    .button_section,
-    .style-section {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      align-items: start;
-      font-weight: bold;
-    }
-
-
-    .button_section,
-    .style-section {
-      margin-bottom: 40px;
-    }
-
-    .item_category_section {
-      margin-bottom: 100px;
-    }
-
-    .item_category_section {
-      column-gap: 30px;
-      row-gap: 0;
-    }
-
-    .style-section {
-      margin-bottom: 60px;
-    }
-
-    /* ラベルと見出しの共通スタイル */
-    label {
-      display: block;
-    }
-
-    h2 {
-      grid-column: span 2;
-      margin: 0;
-    }
-
-    /* アコーディオンスタイル */
-    .accordion-container {
-      display: block;
-      width: 100%;
-    }
-
-    .accordion {
-      background-color: #f1f1f1;
-      color: #444;
-      cursor: pointer;
-      padding: 10px;
-      width: 100%;
-      text-align: left;
-      border: none;
-      outline: none;
-      font-size: 15px;
-      position: relative;
-    }
-
-    .accordion:after {
-      content: '\002B';
-      font-size: 18px;
-      color: #777;
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .active:after {
-      content: "\2212";
-    }
-
-    .panel {
-      display: none;
-      padding: 0 10px;
-      background-color: #f9f9f9;
-      overflow: hidden;
-      width: 100%;
-      position: relative;
-    }
-
-    /* 出力エリア */
-    .create_section {
-      position: fixed;
-      top: 0;
-      right: 10px;
-      background-color: white;
-      padding: 20px;
-      border: 1px solid #ddd;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-      width: 90%;
-      height: 280px;
-      overflow-y: auto;
-      max-height: 80%;
-      font-size: 18pt;
-    }
-
-    .create_section button {
-      font-size: 18pt;
-    }
-
-    .create_section textarea {
-      font-size: 18pt;
-    }
-
-    #output {
-      font-size: 16pt;
-    }
-
-    /* コピー完了時の背景色 */
-    .bg_copycomplete {
-      background-color: #d4edda;
-      /* 明るい緑色 */
-      transition: background-color 0.5s ease;
-    }
-
-    .mercari_footer_button {
-      position: fixed;
-      bottom: 10px;
-      /* 画面下からの距離 */
-      right: 10px;
-      /* 画面右からの距離 */
-      width: 80px;
-      height: 80px;
-      background-color: #ff6b6b;
-      border-radius: 50%;
-      /* ボタンを丸くする */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      /* 見た目を少し立体的に */
-    }
-
-    .mercari_footer_button button {
-      background: none;
-      border: none;
-      color: #333;
-      font-size: 18pt;
-      font-weight: 800;
-      cursor: pointer;
-    }
-
-
-
-    .title_footer_button {
-      position: fixed;
-      bottom: 100px;
-      /* 画面下からの距離 */
-      right: 10px;
-      /* 画面右からの距離 */
-      width: 80px;
-      height: 80px;
-      background-color: #6b90ff;
-      border-radius: 50%;
-      /* ボタンを丸くする */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      /* 見た目を少し立体的に */
-    }
-
-    .title_footer_button button {
-      background: none;
-      border: none;
-      color: #333;
-      font-size: 12pt;
-      font-weight: 800;
-      cursor: pointer;
-    }
-  </style>
+  <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
@@ -266,310 +69,163 @@
             <option value="Overdye">オーバーダイ</option>
             <option value="Shiny">Shiny</option>
             <option value="Check">チェック</option>
+            <option value="迷彩">迷彩</option>
+            <option value="総柄">総柄</option>
           </select>
         </div>
 
         <!-- 付属 -->
-        <div>
-          <label for="feature1">付属1:</label>
-          <select id="feature1">
-            <option value="" selected>なし</option>
-            <option value="モンスターFur">モンスターファー</option>
-            <option value="鬼ファー">鬼ファー</option>
-            <option value="Fur Collar">Fur Collar</option>
-            <option value="Studs">Studs</option>
-            <option value="Bijou">ビジュー</option>
-            <option value="Crush加工">Crushクラッシュ</option>
-            <option value="編込">編込</option>
-            <option value="退廃">退廃</option>
-            <option value="Cross">十字架CROSS</option>
-            <option value="Skull">Skull</option>
-            <option value="二次加工">二次加工</option>
-            <option value="ギャル">ギャル</option>
-            <option value="短丈">短丈</option>
-          </select>
-          <br>
-          <label for="feature2">付属2:</label>
-          <select id="feature2">
-            <option value="" selected>なし</option>
-            <option value="モンスターFur">モンスターファー</option>
-            <option value="鬼ファー">鬼ファー</option>
-            <option value="Fur Collar">Fur Collar</option>
-            <option value="Studs">Studs</option>
-            <option value="Bijou">ビジュー</option>
-            <option value="Crush加工">Crushクラッシュ</option>
-            <option value="編込">編込</option>
-            <option value="退廃">退廃</option>
-            <option value="Cross">十字架CROSS</option>
-            <option value="Skull">Skull</option>
-            <option value="二次加工">二次加工</option>
-            <option value="ギャル">ギャル</option>
-            <option value="短丈">短丈</option>
-          </select>
+        <div id="features-container"></div>
+      </div>
+
+      <!-- 商品カテゴリ -->
+      <div class="item_category_section">
+        <div class="accordion-container">
+          <h3 class="accordion">ジャケット</h3>
+          <div class="panel">
+
+            <select id="jacket" class="category-select">
+              <option value="" selected>なし</option>
+              <option value="Down Vest">Down Vest</option>
+              <option value="Down JKT">Down JKT</option>
+              <option value="Leather Riders JKT">Leather Riders JKT</option>
+              <option value="MilitaryFlight Jacket">Flight Jacket</option>
+              <option value="coat">コート</option>
+              <option value="Mods Coat">モッズコート</option>
+              <option value="Nylon Jacket">ナイロンジャケット</option>
+              <option value="Parker">パーカー</option>
+              <option value="Mouton Jacket">ムートンジャケット</option>
+            </select>
+          </div>
         </div>
+
+        <div class="accordion-container">
+          <h3 class="accordion">ニット</h3>
+          <div class="panel">
+
+            <select id="knit" class="category-select">
+              <option value="" selected>なし</option>
+              <option value="HalfZip Knit">HalfZip Knit</option>
+              <option value="Knit">ニット</option>
+              <option value="Wool Knit">ウールニット</option>
+              <option value="Cashmere Knit">カシミヤニット</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="accordion-container">
+          <h3 class="accordion">スウェット</h3>
+          <div class="panel">
+
+            <select id="sweat" class="category-select">
+              <option value="" selected>なし</option>
+              <option value="Sweat">Sweat</option>
+              <option value="Sweat Parker">sweatパーカー</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="accordion-container">
+          <h3 class="accordion">パンツ</h3>
+
+          <div class="panel">
+
+            <select id="pants" class="category-select">
+              <option value="" selected>なし</option>
+
+              <!-- オプションは必要に応じて追加 -->
+            </select>
+          </div>
+        </div>
+
+        <div class="accordion-container">
+          <h3 class="accordion">スカート</h3>
+          <div class="panel">
+
+            <select id="skirt" class="category-select">
+              <option value="" selected>なし</option>
+
+              <!-- オプションは必要に応じて追加 -->
+            </select>
+          </div>
+        </div>
+
+        <div class="accordion-container">
+          <h3 class="accordion">Tシャツ</h3>
+          <div class="panel">
+
+            <select id="tshirt" class="category-select">
+              <option value="" selected>なし</option>
+
+              <option value="ロンTee">ロンTee</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="accordion-container">
+          <h3 class="accordion">帽子</h3>
+          <div class="panel">
+
+            <select id="hat" class="category-select">
+              <option value="" selected>なし</option>
+
+              <option value="Knitcap">Knitcap</option>
+              <option value="Ear Flap Knitcap">Ear Flap Knitcap</option>
+              <option value="Furcap">ファーcap</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="accordion-container">
+          <h3 class="accordion">バッグ</h3>
+          <div class="panel">
+
+            <select id="bag" class="category-select">
+              <option value="" selected>なし</option>
+
+              <option value="Hand Bag">Hand Bag</option>
+              <option value="Shoulder Bag">Shoulder Bag</option>
+              <option value="Sling Bag ワンショルダー">ワンショルダー Bag</option>
+              <option value="BackPack">BackPack</option>
+              <option value="Leather ShoulderBag">レザーショルダーバッグ</option>
+              <option value="Leather HandBag">レザーハンドバッグ</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="accordion-container">
+          <h3 class="accordion">靴</h3>
+          <div class="panel">
+
+            <select id="shoes" class="category-select">
+              <option value="" selected>なし</option>
+
+              <!-- オプションは必要に応じて追加 -->
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- 出力ゾーン -->
+      <div class="create_section">
+        <textarea id="output"></textarea>
+        <p>現在の文字数: <span id="char-count">0</span>文字</p>
+        <!-- 出力ボタン -->
+        <button type="button" id="generate-title">生成</button>
+        <button type="button" id="copy-title">コピー</button>
+        <button type="button" id="clear-title">クリア</button>
+        </form>
+      </div>
+
+      <div id="templates-container"></div>
+      <div class="mercari_footer_button">
+        <button onclick="footer_mercariopenWindow()" id="mercari_footer_button">メル</button>
+      </div>
+      <div class="title_footer_button">
+        <button onclick="footer_templatebuttonopenWindow()" id="title_footer_button">テンプレ</button>
       </div>
     </div>
-
-    <!-- 商品カテゴリ -->
-    <div class="item_category_section">
-      <div class="accordion-container">
-        <h3 class="accordion">ジャケット</h3>
-        <div class="panel">
-
-          <select id="jacket" class="category-select">
-            <option value="" selected>なし</option>
-            <option value="Down Vest">Down Vest</option>
-            <option value="Down JKT">Down JKT</option>
-            <option value="Leather Riders JKT">Leather Riders JKT</option>
-            <option value="MilitaryFlight Jacket">Flight Jacket</option>
-            <option value="coat">コート</option>
-            <option value="Mods Coat">モッズコート</option>
-            <option value="Nylon Jacket">ナイロンジャケット</option>
-            <option value="Parker">パーカー</option>
-            <option value="Mouton Jacket">ムートンジャケット</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="accordion-container">
-        <h3 class="accordion">ニット</h3>
-        <div class="panel">
-
-          <select id="knit" class="category-select">
-            <option value="" selected>なし</option>
-            <option value="HalfZip Knit">HalfZip Knit</option>
-            <option value="Knit">ニット</option>
-            <option value="Wool Knit">ウールニット</option>
-            <option value="Cashmere Knit">カシミヤニット</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="accordion-container">
-        <h3 class="accordion">スウェット</h3>
-        <div class="panel">
-
-          <select id="sweat" class="category-select">
-            <option value="" selected>なし</option>
-            <option value="Sweat">Sweat</option>
-            <option value="Sweat Parker">sweatパーカー</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="accordion-container">
-        <h3 class="accordion">パンツ</h3>
-
-        <div class="panel">
-
-          <select id="pants" class="category-select">
-            <option value="" selected>なし</option>
-
-            <!-- オプションは必要に応じて追加 -->
-          </select>
-        </div>
-      </div>
-
-      <div class="accordion-container">
-        <h3 class="accordion">スカート</h3>
-        <div class="panel">
-
-          <select id="skirt" class="category-select">
-            <option value="" selected>なし</option>
-
-            <!-- オプションは必要に応じて追加 -->
-          </select>
-        </div>
-      </div>
-
-      <div class="accordion-container">
-        <h3 class="accordion">Tシャツ</h3>
-        <div class="panel">
-
-          <select id="tshirt" class="category-select">
-            <option value="" selected>なし</option>
-
-            <option value="ロンTee">ロンTee</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="accordion-container">
-        <h3 class="accordion">帽子</h3>
-        <div class="panel">
-
-          <select id="hat" class="category-select">
-            <option value="" selected>なし</option>
-
-            <option value="Knitcap">Knitcap</option>
-            <option value="Ear Flap Knitcap">Ear Flap Knitcap</option>
-            <option value="Furcap">ファーcap</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="accordion-container">
-        <h3 class="accordion">バッグ</h3>
-        <div class="panel">
-
-          <select id="bag" class="category-select">
-            <option value="" selected>なし</option>
-
-            <option value="Hand Bag">Hand Bag</option>
-            <option value="Shoulder Bag">Shoulder Bag</option>
-            <option value="Sling Bag ワンショルダー">ワンショルダー Bag</option>
-            <option value="BackPack">BackPack</option>
-            <option value="Leather ShoulderBag">レザーショルダーバッグ</option>
-            <option value="Leather HandBag">レザーハンドバッグ</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="accordion-container">
-        <h3 class="accordion">靴</h3>
-        <div class="panel">
-
-          <select id="shoes" class="category-select">
-            <option value="" selected>なし</option>
-
-            <!-- オプションは必要に応じて追加 -->
-          </select>
-        </div>
-      </div>
-    </div>
-
-    <!-- 出力ゾーン -->
-    <div class="create_section">
-      <textarea id="output"></textarea>
-      <p>現在の文字数: <span id="char-count">0</span>文字</p>
-      <!-- 出力ボタン -->
-      <button type="button" id="generate-title">生成</button>
-      <button type="button" id="copy-title">コピー</button>
-      <button type="button" id="clear-title">クリア</button>
-      </form>
-    </div>
-
-    <div id="templates-container"></div>
-    <div class="mercari_footer_button">
-      <button onclick="footer_mercariopenWindow()" id="mercari_footer_button">メル</button>
-    </div>
-    <div class="title_footer_button">
-      <button onclick="footer_templatebuttonopenWindow()" id="title_footer_button">テンプレ</button>
-    </div>
-
-
-  </div>
-
-  <script>
-    // アコーディオンの機能
-    const accordions = document.querySelectorAll('.accordion');
-    accordions.forEach(acc => {
-      acc.addEventListener('click', function () {
-        this.classList.toggle('active');
-        const panel = this.nextElementSibling;
-        if (panel.style.display === 'block') {
-          panel.style.display = 'none';
-        } else {
-          panel.style.display = 'block';
-        }
-      });
-    });
-
-    // 直近で選択されたカテゴリの値を取得
-    let lastSelectedCategory = '';
-    document.querySelectorAll('.category-select').forEach(select => {
-      select.addEventListener('change', function () {
-        lastSelectedCategory = this.value;
-      });
-    });
-
-    document.getElementById("generate-title").addEventListener("click", function () {
-      // 各選択値を取得
-      const year = document.getElementById("year").value;
-      const prefix = document.getElementById("prefix").value;
-      const material = document.getElementById("material").value;
-      let feature1 = document.getElementById("feature1").value;
-      let feature2 = document.getElementById("feature2").value;
-      const style = document.getElementById("style").value;
-
-      // タイトルを生成
-      let keywords = [material, feature1, feature2].filter(keyword => keyword).join(" ");
-      let title = `【${year}_${prefix}】 ${keywords} ${lastSelectedCategory} ${style}`;
-
-      // 空白をすべて削除
-      title = title.replace(/\s+/g, "");
-
-      // 40文字を超える場合の処理
-      if (title.length > 40) {
-        keywords = [material, feature1].filter(keyword => keyword).join(" ");
-        title = `【${year}_${prefix}】 ${keywords} ${lastSelectedCategory} ${style}`.replace(/\s+/g, "");
-      }
-
-      if (title.length > 40) {
-        keywords = [material].filter(keyword => keyword).join(" ");
-        title = `【${year}_${prefix}】 ${keywords} ${lastSelectedCategory} ${style}`.replace(/\s+/g, "");
-      }
-
-      // 文字数が40を超えている場合は赤にする
-      const outputElement = document.getElementById("output");
-      const charCountElement = document.getElementById("char-count");
-      charCountElement.textContent = title.length;
-
-      if (title.length > 40) {
-        outputElement.value = title;
-        outputElement.classList.add("red-text");
-        outputElement.style.color = "red";
-      } else {
-        outputElement.value = title;
-        outputElement.classList.remove("red-text");
-        outputElement.style.color = "#333";
-      }
-    });
-
-    // コピー機能
-    document.getElementById("copy-title").addEventListener("click", function () {
-      const outputElement = document.getElementById("output");
-      navigator.clipboard.writeText(outputElement.value).then(() => {
-        // クラスを付与
-        outputElement.classList.add("bg_copycomplete");
-        // 1秒後にクラスを削除
-        setTimeout(() => {
-          outputElement.classList.remove("bg_copycomplete");
-        }, 1000);
-      }).catch(err => {
-        // エラー処理（必要に応じて）
-        console.error("コピーに失敗しました: ", err);
-      });
-    });
-
-
-    document.getElementById("clear-title").addEventListener("click", () => {
-      const textarea = document.getElementById("output");
-      const charCount = document.getElementById("char-count");
-      if (textarea) textarea.value = ''; // テキストエリアをクリア
-      if (charCount) charCount.textContent = '0'; // 文字数をリセット
-    });
-
-
-
-
-    //mercaributton
-    function footer_mercariopenWindow() {
-      const externalWindow = window.open("https://www.mercari.com/jp/", "_blank");
-      setTimeout(() => {
-        if (externalWindow) {
-          externalWindow.close();
-        } else {
-          console.log("ウィンドウを開けませんでした（ポップアップがブロックされた可能性があります）。");
-        }
-      }, 100);
-    }
-
-    //titlebutton
-    function footer_templatebuttonopenWindow() {
-      window.open('https://database-app-6ms4.onrender.com/template', '_blank');
-    }
-  </script>
+    <script src="/script.js"></script>
 </body>
 
 </html>
