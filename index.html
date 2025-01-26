@@ -38,7 +38,16 @@
       gap: 20px;
       align-items: start;
       font-weight: bold;
-      margin-bottom: 40px;
+    }
+
+    
+    .button_section,
+    .style-section {
+    margin-bottom: 40px;
+    }
+
+    .item_category_section {
+    margin-bottom: 100px;
     }
 
     .item_category_section {
@@ -136,6 +145,62 @@
       background-color: #d4edda;
       /* 明るい緑色 */
       transition: background-color 0.5s ease;
+    }
+
+    .mercari_footer_button {
+      position: fixed;
+      bottom: 10px;
+      /* 画面下からの距離 */
+      right: 10px;
+      /* 画面右からの距離 */
+      width: 80px;
+      height: 80px;
+      background-color: #ff6b6b;
+      border-radius: 50%;
+      /* ボタンを丸くする */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      /* 見た目を少し立体的に */
+    }
+
+    .mercari_footer_button button {
+      background: none;
+      border: none;
+      color: #333;
+      font-size: 18pt;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+
+
+    .title_footer_button {
+      position: fixed;
+      bottom: 100px;
+      /* 画面下からの距離 */
+      right: 10px;
+      /* 画面右からの距離 */
+      width: 80px;
+      height: 80px;
+      background-color: #6b90ff;
+      border-radius: 50%;
+      /* ボタンを丸くする */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      /* 見た目を少し立体的に */
+    }
+
+    .title_footer_button button {
+      background: none;
+      border: none;
+      color: #333;
+      font-size: 18pt;
+      font-weight: 800;
+      cursor: pointer;
     }
   </style>
 </head>
@@ -368,6 +433,15 @@
       </form>
     </div>
 
+    <div id="templates-container"></div>
+    <div class="mercari_footer_button">
+      <button onclick="footer_mercariopenWindow()" id="mercari_footer_button">メル</button>
+    </div>
+    <div class="title_footer_button">
+      <button onclick="footer_templatebuttonopenWindow()" id="title_footer_button">テンプレ</button>
+    </div>
+
+
   </div>
 
   <script>
@@ -460,6 +534,25 @@
       if (charCount) charCount.textContent = '0'; // 文字数をリセット
     });
 
+
+
+
+    //mercaributton
+    function footer_mercariopenWindow() {
+      const externalWindow = window.open("https://www.mercari.com/jp/", "_blank");
+      setTimeout(() => {
+        if (externalWindow) {
+          externalWindow.close();
+        } else {
+          console.log("ウィンドウを開けませんでした（ポップアップがブロックされた可能性があります）。");
+        }
+      }, 100);
+    }
+
+    //titlebutton
+    function footer_templatebuttonopenWindow() {
+      window.open('https://database-app-6ms4.onrender.com/template', '_blank');
+    }
   </script>
 </body>
 
