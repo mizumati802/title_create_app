@@ -494,7 +494,7 @@
 
       // タイトルを生成
       let keywords = [material, feature1, feature2].filter(keyword => keyword).join(" ");
-      let title = `[${year}_${prefix}] ${keywords} ${lastSelectedCategory} ${style}`;
+      let title = `【${year}_${prefix}】 ${keywords} ${lastSelectedCategory} ${style}`;
 
       // 空白をすべて削除
       title = title.replace(/\s+/g, "");
@@ -507,7 +507,7 @@
 
       if (title.length > 40) {
         keywords = [material].filter(keyword => keyword).join(" ");
-        title = `[${year}_${prefix}] ${keywords} ${lastSelectedCategory} ${style}`.replace(/\s+/g, "");
+        title = `【${year}_${prefix}】 ${keywords} ${lastSelectedCategory} ${style}`.replace(/\s+/g, "");
       }
 
       // 文字数が40を超えている場合は赤にする
