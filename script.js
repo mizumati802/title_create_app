@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
     <option value="二次加工">二次加工</option>
     <option value="ギャル">ギャル</option>
     <option value="短丈">短丈</option>
-    <option value="shirring">シャーリング</option>
+    <option value="Shirring">シャーリング</option>
+    <option value="Gimmick">ギミック</option>
+
   `;
 
   // 付属ドロップダウンを動的に生成
