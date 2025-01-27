@@ -23,7 +23,7 @@ select {
 
 /* グリッドレイアウト */
 .item_category_section,
-.button_section,
+
 .style-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -31,6 +31,8 @@ select {
   align-items: start;
   font-weight: bold;
 }
+
+.item_category_section,
 
 
 .button_section,
