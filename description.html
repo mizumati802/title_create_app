@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keyword Combination Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    .dropdown {
+      margin-bottom: 10px;
+    }
+
+    .output {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Keyword Combination Form</h1>
+
+  <form id="keywordForm">
+    <div class="dropdown">
+      <label for="silhouette">シルエット: </label>
+      <select class="silhouette">
+        <option value="" class="silhouette-none">選択してください</option>
+        <option value="トレンド感ある身幅広め" class="silhouette-wide">身幅広め</option>
+        <option value="人気のビッグシルエット" class="silhouette-big">ビッグシルエット</option>
+        <option value="人気の短丈シルエット！" class="silhouette-short">短丈</option>
+        <option value="当時らしいワイドなシルエット！" class="silhouette-90s-wide">90sワイドシルエット</option>
+        <option value="平成当時らしいタイトなシルエット！" class="silhouette-tight">タイトシルエット</option>
+      </select>
+    </div>
+
+    <div class="attached-section"></div>
+
+    <div class="dropdown">
+      <label for="texture">生地: </label>
+      <select class="texture">
+        <option value="" class="texture-none">選択してください</option>
+        <option value="くすんだような生地感が調子いいです！" class="くすんだ">くすみ</option>
+        <option value="光沢感がギャルいノリでトレンド感ございます！" class="Shiny">光沢</option>
+      </select>
+    </div>
+
+    <div class="dropdown">
+      <label for="taste">テイスト: </label>
+      <select class="taste">
+        <option value="" class="taste-none">選択してください</option>
+        <option value="フェアリーグランジはもちろん、森ガールな雰囲気もあり、ボーホーテイストな雰囲気のあるアイテムです！" class="taste-forest">森ガール</option>
+        <option value="パンキッシュでロックなノリも感じられ、激しいデザインはまさに平成ならでは" class="taste-rock">平成ロック</option>
+        <option value="PPFMやトルネードマート、バッファローボブズ、などマクブリング系や平成ギャルファッションがお好きな方にもオススメ！" class="ギャル">ギャル</option>
+      </select>
+    </div>
+
+    <div class="dropdown">
+      <label for="gender">性別: </label>
+      <select class="gender">
+        <option value="" class="gender-none">選択してください</option>
+        <option value="レディースですが、サイズ感考慮でメンズでお出ししております。必ずサイズ表記と打ち合わせをご確認くださいませ。" class="gender-women-to-men">レディース→メンズ
+        </option>
+        <option value="ユニセックスで着用可能" class="gender-unisex">ユニセックス</option>
+      </select>
+    </div>
+
+    <div class="dropdown">
+      <label for="template">テンプレ: </label>
+      <select class="template">
+        <option value="" class="template">選択してください</option>
+        <option
+          value="存在感抜群のギャル系Modsコート。トレンド感のあるシルエットが魅力で、細部にわたるディテールが印象的。バックや袖に入った装飾やフードのデザインが、平成初期の雰囲気を盛り上げています。古着らしいユーズド感がありながらも、グランジ感漂う一着です！合わせ方次第で様々なスタイリングが楽しめるので、オススメです！"
+          class="ModsCoat">モッズコート</option>
+        <option value="トレンド感溢れるヴィンテージレザージャケット。現代のスタイルにもマッチする洗練されたシルエットが魅力で、まさに一軍級のアイテムです。形の悪いレザージャケットが多い中、厳選されたシルエットは抜群のフィット感。  
+平成グランジやY2Kコーデに欠かせない、ストリートやモードのアクセントとして活躍する一着。" class="Leather Jacket">レザージャケット</option>
+      </select>
+    </div>
+    <button type="button" onclick="generateOutput()">結果を生成</button>
+  </form>
+
+  <form id="inputForm">
+    <h2>文章から選択自動生成</h2>
+    <textarea id="inputText" rows="5" cols="50" placeholder="文章を入力してください"></textarea>
+    <button type="button" onclick="autoSelect()">自動選択</button>
+  </form>
+
+  <div class="output">
+    <h2>出力結果</h2>
+    <textarea id="output" rows="10" cols="50"></textarea>
+  </div>
+
+  <script>
+    function generateOutput() {
+      const elements = document.querySelectorAll('select');
+      let result = '';
+
+      elements.forEach(element => {
+        if (element.value) {
+          result += element.value + '\n';
+        }
+      });
+
+      document.getElementById('output').value = result.trim();
+    }
+
+    function autoSelect() {
+      const text = document.getElementById('inputText').value;
+      const selects = document.querySelectorAll('select');
+
+      selects.forEach(select => {
+        const options = select.options;
+        for (let i = 0; i < options.length; i++) {
+          if (text.includes(options[i].className)) {
+            select.value = options[i].value;
+            break;
+          }
+        }
+      });
+
+      generateOutput();
+    }
+
+    function createAttachedDropdowns() {
+      const attachedSection = document.querySelector('.attached-section');
+
+      for (let i = 1; i <= 3; i++) {
+        const dropdownDiv = document.createElement('div');
+        dropdownDiv.classList.add('dropdown');
+
+        const label = document.createElement('label');
+        label.setAttribute('for', `attached-${i}`);
+        label.textContent = `付属 ${i}: `;
+
+        const select = document.createElement('select');
+        select.classList.add(`attached-${i}`);
+
+        const options = [
+          { value: '', text: '選択してください', class: `attached-none-${i}` },
+          { value: 'アンティークの付属が雰囲気あります！', text: 'アンティーク付属', class: `アンティーク付属${i}` },
+          { value: 'ファーもボリュームが半端なく、インパクト抜群です！', text: '鬼ファー', class: `鬼ファー${i}` },
+          { value: '大きめファーでボリュームが半端なく、インパクト抜群です！', text: 'モンスターファー', class: `モンスターFur${i}` },
+          { value: '人気のダブルジップ！', text: 'ダブルジップ！', class: `ダブルジップ${i}` },
+          { value: 'フード着脱', text: 'フード着脱', class: `attached-hood-detach-${i}` },
+          { value: 'ファー着脱', text: 'ファー着脱', class: `attached-fur-detach-${i}` },
+          { value: 'フードファー着脱', text: 'フード、ファー共に着脱可能！', class: `attached-hood-fur-detach-${i}` },
+          { value: 'ドローコードでシルエットも自在に変えることが出来ます！', text: 'ドローコード', class: `ドローコード${i}` },
+          { value: 'こだわりの装飾的なボタンディテール！', text: 'ボタンディテール', class: `ボタン${i}` },
+          { value: '刺繍がめちゃくちゃカッコいいです！', text: '刺繍', class: `刺繍${i}` },
+          { value: '打ち込まれたスタッズ！', text: 'スタッズ', class: `studs${i}` },
+          { value: 'ハトメディテールがハードな印象！', text: 'ハトメ', class: `ハトメ${i}` },
+        ];
+
+        options.forEach(option => {
+          const opt = document.createElement('option');
+          opt.value = option.value;
+          opt.textContent = option.text;
+          opt.className = option.class;
+          select.appendChild(opt);
+        });
+
+        dropdownDiv.appendChild(label);
+        dropdownDiv.appendChild(select);
+        attachedSection.appendChild(dropdownDiv);
+      }
+    }
+
+    // Initialize dynamic dropdowns
+    createAttachedDropdowns();
+  </script>
+</body>
+
+</html>
